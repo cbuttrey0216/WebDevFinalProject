@@ -2,6 +2,7 @@
 `   Title: index.html
     Author: Luis G. Flores-Moreno & Connor Buttrey
     Date: 03 March, 2025
+    last Updated on: 04 April
     Project: Peer Review
 -->
 
@@ -16,23 +17,54 @@
 <body class="bg-dark">
   <div class="d-flex justify-content-center align-items-center vh-100 flex-column">
 
-    <!-- Login -->
-    <form class="card col-12 col-md-6 col-lg-5" id="frmLogin">
+    <!-- Role Selection -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmRoleSelect">
+      <div class="card-body text-center">
+        <h1 class="text-primary mb-3">Welcome to Group Review</h1>
+        <p>Select your role to begin:</p>
+        <button class="btn btn-primary col-12 mb-2" id="btnRoleStudent">Login as Student</button>
+        <button class="btn btn-secondary col-12" id="btnRoleInstructor">Login as Instructor</button>
+      </div>
+    </div>
+
+    <!-- Instructor Login -->
+    <form class="card col-12 col-md-6 col-lg-5" id="frmInstructorLogin" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center text-primary">Instructor Login</h1>
+        <h3 class="text-center mb-4">Login</h3>
+        <input id="txtInstructorEmail" class="form-control mb-2" type="email" placeholder="Email Address" />
+        <input id="txtInstructorPassword" class="form-control mb-2" type="password" placeholder="Password" />
+        <button class="btn btn-primary col-12 mt-2" type="submit" id="btnInstructorLogin">Login</button>
+        <button class="btn btn-link col-12 mt-1" type="button" id="btnBackToRoleSelectFromInstructor">Back to Role Select</button>
+      </div>
+    </form>
+
+    <!-- Instructor Panel -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmInstructor" style="display:none;">
+      <div class="card-body text-center">
+        <h1 class="text-primary mb-3">Instructor Panel</h1>
+        <select class="form-control mb-3">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <button class="btn btn-link col-12" id="btnBackToRoleSelect">Back</button>
+      </div>
+    </div>
+
+    <!-- Student Login -->
+    <form class="card col-12 col-md-6 col-lg-5" id="frmLogin" style="display:none;">
       <div class="card-body">
         <h1 class="text-center text-primary">Group Review System</h1>
         <h3 class="text-center mb-4">Login</h3>
-        <div class="form-group">
-          <input id="txtLoginEmail" class="form-control mb-2" type="email" placeholder="Email Address" />
-        </div>
-        <div class="form-group">
-          <input id="txtLoginPassword" class="form-control mb-2" type="password" placeholder="Password" />
-        </div>
+        <input id="txtLoginEmail" class="form-control mb-2" type="email" placeholder="Email Address" />
+        <input id="txtLoginPassword" class="form-control mb-2" type="password" placeholder="Password" />
         <button class="btn btn-primary col-12 mt-2" type="submit" id="btnLogin">Login</button>
         <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToRegister">Don't have an account? Register here.</button>
       </div>
     </form>
 
-    <!-- Registration -->
+    <!-- Student Registration -->
     <form class="card col-12 col-md-6 col-lg-5" id="frmRegistration" style="display:none;">
       <div class="card-body">
         <h1 class="text-center text-primary">Group Review System</h1>
@@ -47,7 +79,7 @@
       </div>
     </form>
 
-    <!-- Dashboard -->
+    <!-- Student Dashboard Selection -->
     <div class="card col-12 col-md-6 col-lg-5" id="frmDashboard" style="display:none;">
       <div class="card-body">
         <h1 class="text-center mb-4">Dashboard</h1>
@@ -81,10 +113,7 @@
     <div class="card col-12 col-md-6 col-lg-5" id="frmCompleteReview" style="display:none;">
       <div class="card-body">
         <h1 class="text-center mb-3">Complete Review</h1>
-        <p>Write feedback for each of your group members.</p>
-        <div id="reviewFormGroup">
-          <!-- Dynamically injected review fields per group member -->
-        </div>
+        <div id="reviewFormGroup"></div>
         <button class="btn btn-primary col-12 mt-3" id="btnSubmitReview">Submit Review</button>
         <button class="btn btn-link col-12 mt-2" id="btnBackToStudentDashboard1">Back</button>
       </div>
@@ -110,8 +139,8 @@
         <h1 class="text-center mb-3">Public Feedback</h1>
         <ul class="list-group">
           <li class="list-group-item"><strong>Alice:</strong> "Always prepared and supportive."</li>
-          <li class="list-group-item"><strong>Bob:</strong> "Needs to engage more in group work."</li>
-          <li class="list-group-item"><strong>Charlie:</strong> "Great at organizing tasks."</li>
+          <li class="list-group-item"><strong>Bob:</strong> "Needs to engage more."</li>
+          <li class="list-group-item"><strong>Charlie:</strong> "Great at organizing."</li>
         </ul>
         <button class="btn btn-link col-12 mt-3" id="btnBackToStudentDashboard3">Back</button>
       </div>
@@ -122,9 +151,9 @@
       <div class="card-body">
         <h1 class="text-center mb-3">Group Reports</h1>
         <ul class="list-group mb-3">
-          <li class="list-group-item"><strong>Alice:</strong> 8.4 – "Hard-working and kind."</li>
-          <li class="list-group-item"><strong>Bob:</strong> 7.9 – "Can improve punctuality."</li>
-          <li class="list-group-item"><strong>Charlie:</strong> 8.1 – "Good collaborator."</li>
+          <li class="list-group-item"><strong>Alice:</strong> 8.4 – "Hard-working."</li>
+          <li class="list-group-item"><strong>Bob:</strong> 7.9 – "Could participate more."</li>
+          <li class="list-group-item"><strong>Charlie:</strong> 8.1 – "Great help overall."</li>
         </ul>
         <button class="btn btn-link col-12" id="btnBackToStudentDashboard4">Back</button>
       </div>
@@ -146,25 +175,41 @@
 
     let currentCourse = "";
 
-    // Registration, Login, Navigation
+    // Show role selection first
+    showView("frmRoleSelect");
+
+    // Role selection buttons
+    document.getElementById("btnRoleStudent").onclick = () => showView("frmLogin");
+    document.getElementById("btnRoleInstructor").onclick = () => showView("frmInstructorLogin");
+    document.getElementById("btnBackToRoleSelect").onclick = () => showView("frmRoleSelect");
+    document.getElementById("btnBackToRoleSelectFromInstructor").onclick = () => showView("frmRoleSelect");
+
+    // Instructor login
+    document.getElementById("btnInstructorLogin").onclick = (e) => {
+      e.preventDefault();
+      const email = document.getElementById("txtInstructorEmail").value.trim();
+      const pass = document.getElementById("txtInstructorPassword").value;
+      if (!email || !pass) {
+        Swal.fire({ icon: "warning", title: "Please enter email and password." });
+        return;
+      }
+      Swal.fire({ icon: "success", title: "Welcome, Instructor!" }).then(() => showView("frmInstructor"));
+    };
+
+    // Student registration/login
     btnSwapToRegister.onclick = () => showView("frmRegistration");
     btnSwapToLogin.onclick = () => showView("frmLogin");
-
     btnRegister.onclick = e => {
       e.preventDefault();
       Swal.fire({ icon: "success", title: "Registered!" }).then(() => showView("frmLogin"));
     };
-
     btnLogin.onclick = e => {
       e.preventDefault();
       showView("frmDashboard");
     };
 
-    btnLogout.onclick = () => {
-      Swal.fire({ icon: "info", title: "Logged Out" }).then(() => showView("frmLogin"));
-    };
-
-    // Dashboard: Select Course
+    // Student Dashboard flow
+    btnLogout.onclick = () => Swal.fire({ icon: "info", title: "Logged Out" }).then(() => showView("frmLogin"));
     btnSubmit.onclick = () => {
       currentCourse = document.getElementById("ddlDashboardCourses").value;
       if (!currentCourse) {
@@ -173,8 +218,6 @@
       }
       showView("frmStudentDashboard");
     };
-
-    // Student Dashboard navigation
     btnBack.onclick = () => showView("frmDashboard");
     btnCompleteReview.onclick = () => {
       const members = groupMembers[currentCourse] || [];
@@ -186,23 +229,17 @@
             <label>${name}'s Score (1–10)</label>
             <input class="form-control mb-2" type="number" min="1" max="10" />
             <label>Feedback</label>
-            <textarea class="form-control mb-3" rows="2" placeholder="Write something about ${name}..."></textarea>
-          </div>
-        `;
+            <textarea class="form-control mb-3" rows="2" placeholder="Feedback for ${name}..."></textarea>
+          </div>`;
       });
       showView("frmCompleteReview");
     };
-
-    btnSubmitReview.onclick = () => {
-      Swal.fire({ icon: "success", title: "Review Submitted" }).then(() => showView("frmStudentDashboard"));
-    };
-
-    // Other views
+    btnSubmitReview.onclick = () => Swal.fire({ icon: "success", title: "Review Submitted" }).then(() => showView("frmStudentDashboard"));
     btnReviewScore.onclick = () => showView("frmReviewScore");
     btnReviewPublic.onclick = () => showView("frmReviewPublic");
     btnReports.onclick = () => showView("frmReports");
 
-    // Back buttons
+    // Back from subpages
     btnBackToStudentDashboard1.onclick =
     btnBackToStudentDashboard2.onclick =
     btnBackToStudentDashboard3.onclick =
@@ -210,6 +247,7 @@
   </script>
 </body>
 </html>
+
 
 
 
