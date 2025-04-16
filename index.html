@@ -5,326 +5,214 @@
     Project: Peer Review
 -->
 
-
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Review</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Group Review</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="bg-dark">
-    <div class="d-flex justify-content-center align-items-center vh-100 flex-column">
-        <!-- Login Form -->
-        <form class="card col-12 col-md-6 col-lg-5" id="frmLogin">
-            <div class="card-body">
-                <h1 class="text-center mb-0 text-primary">Group Review System</h1>
-                <h3 class="text-center mb-4">Login</h3>
+  <div class="d-flex justify-content-center align-items-center vh-100 flex-column">
 
-                <div class="form-group">
-                    <label for="txtLoginEmail" class="sr-only">Email Address</label>
-                    <input id="txtLoginEmail" class="form-control mb-2" type="email" placeholder="Email Address" aria-label="Enter your email address to log in.">
-                </div>
-                <div class="form-group">
-                    <label for="txtLoginPassword" class="sr-only">Password</label>
-                    <input id="txtLoginPassword" class="form-control mb-2" type="password" placeholder="Password" aria-label="Enter your password to log in.">
-                </div>
-                
-                <hr />
-                <button class="btn btn-primary col-12 mt-2" type="submit" id="btnLogin" aria-label="Submit the login form">Login</button>
-                <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToRegister">Don't have an account? Register here.</button>
-            </div>
-        </form>
-
-        <!-- Registration Form -->
-        <form class="card col-12 col-md-6 col-lg-5" id="frmRegistration" style="display:none;">
-            <div class="card-body">
-                <h1 class="text-center mb-0 text-primary">Group Review System</h1>
-                <h3 class="text-center mb-4">User Registration</h3>
-                <div class="form-group">
-                    <label for="txtFirstName" class="sr-only">First Name</label>
-                    <input id="txtFirstName" class="form-control mb-2" type="text" placeholder="First Name" aria-label="Enter your first name for registration">
-                </div>
-                <div class="form-group">
-                    <label for="txtLastName" class="sr-only">Last Name</label>
-                    <input id="txtLastName" class="form-control mb-2" type="text" placeholder="Last Name" aria-label="Enter your last name for registration">
-                </div>
-                <div class="form-group">
-                    <label for="txtEmail" class="sr-only">Email Address</label>
-                    <input id="txtEmail" class="form-control mb-2" type="email" placeholder="Email Address" aria-label="Enter your email address">
-                </div>
-                <div class="form-group">
-                    <label for="txtPassword" class="sr-only">Password</label>
-                    <input id="txtPassword" class="form-control mb-2" type="password" placeholder="Password" aria-label="Create a password for your account">
-                </div>
-                <div class="form-group">
-                    <label for="txtConfirmPassword" class="sr-only">Confirm Password</label>
-                    <input id="txtConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password" aria-label="Confirm your password">
-                </div>
-                
-                <hr />
-                <button class="btn btn-primary col-12 mt-2" type="submit" id="btnRegister" aria-label="Submit the registration form">Register</button>
-                <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToLogin">Already have an account? Login here</button>
-            </div>
-        </form>
-
-        <!-- Dashboard -->
-        <div class="card col-12 col-md-6 col-lg-5" id="frmDashboard" style="display:none;">
-            <div class="card-body">
-                <h1 class="text-center mb-4">Welcome to the Group Review Dashboard!</h1>
-                <p class="text-center">Here you can submit your reviews anonymously.</p>
-                <button class ="btn btn-primary col-12 mt-2" type="button" id="btnSubmit">Submit</button>
-                <button class="btn btn-danger col-12 mt-3" type="button" id="btnLogout">Logout</button>
-            </div>
+    <!-- Login -->
+    <form class="card col-12 col-md-6 col-lg-5" id="frmLogin">
+      <div class="card-body">
+        <h1 class="text-center text-primary">Group Review System</h1>
+        <h3 class="text-center mb-4">Login</h3>
+        <div class="form-group">
+          <input id="txtLoginEmail" class="form-control mb-2" type="email" placeholder="Email Address" />
         </div>
-
-        <!-- Student Dashboard -->
-         <div class="card col-12 col-md-6 col-lg-5" id="frmStudentDashboard" style="display:none;">
-            <div class="card-body">
-                <h1 class="text-center mb-0">Student Dashboard</h1>
-                <hr />
-                <div class="row">
-                    <div class="col-6 mb-2">
-                        <button class="btn btn-primary col-12" type="button" id="btnCompleteReview">Complete Review</button>
-                    </div>
-                    <div class="col-6 mb-2">
-                        <button class="btn btn-primary col-12" type="button" id="btnReviewScore">Review Score</button>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-primary col-12" type="button" id="btnReviewPublic">Review Public</button>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-primary col-12" type="button" id="btnReports">Reports</button>
-                    </div>
-                </div>
-                <button class="btn btn-link col-12 mt-0" type="button" id="btnBack">Back</button>
-            </div>
+        <div class="form-group">
+          <input id="txtLoginPassword" class="form-control mb-2" type="password" placeholder="Password" />
         </div>
+        <button class="btn btn-primary col-12 mt-2" type="submit" id="btnLogin">Login</button>
+        <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToRegister">Don't have an account? Register here.</button>
+      </div>
+    </form>
 
-        <!-- Complete Review Page -->
-        <div class="card col-12 col-md-6 col-lg-5" id="frmCompleteReview" style="display:none;">
-            <div class="card-body">
-                <h1 class="text-center mb-0">Complete Review</h1>
-                <hr />
-                <p class="text-center">Please complete your review.</p>
-        
-                <!-- Dropdown for selecting a category -->
-                <div class="form-group mb-3">
-                    <label for="reviewCategory" class="form-label">Select Course</label>
-                    <select id="reviewCategory" class="form-control">
-                        <!-- Will add courses dynamically based on user -->
-                    </select>
-                </div>
-        
-                <!-- Open response number input -->
-                <div class="form-group mb-3">
-                    <label for="reviewScore" class="form-label">Score (1-10)</label>
-                    <input id="reviewScore" type="number" class="form-control" min="1" max="10" placeholder="Enter a score">
-                </div>
-        
-                <!-- Dropdown for public/private -->
-                <div class="form-group mb-3">
-                    <label for="reviewVisibility" class="form-label">Visibility</label>
-                    <select id="reviewVisibility" class="form-control">
-                        <option value="" disabled selected>Select visibility</option>
-                        <option value="public">Public</option>
-                        <option value="private">Private</option>
-                    </select>
-                </div>
-        
-                <!-- Open space for writing a review -->
-                <div class="form-group mb-3">
-                    <label for="reviewText" class="form-label">Write Your Review</label>
-                    <textarea id="reviewText" class="form-control" rows="5" placeholder="Write your review here..."></textarea>
-                </div>
-        
-                <button class="btn btn-primary col-12 mt-2" type="button" id="btnSubmitReview">Submit Review</button>
-                <button class="btn btn-link col-12 mt-3" type="button" id="btnBackToDashboard">Back to Dashboard</button>
-            </div>
+    <!-- Registration -->
+    <form class="card col-12 col-md-6 col-lg-5" id="frmRegistration" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center text-primary">Group Review System</h1>
+        <h3 class="text-center mb-4">Register</h3>
+        <input id="txtFirstName" class="form-control mb-2" type="text" placeholder="First Name" />
+        <input id="txtLastName" class="form-control mb-2" type="text" placeholder="Last Name" />
+        <input id="txtEmail" class="form-control mb-2" type="email" placeholder="Email Address" />
+        <input id="txtPassword" class="form-control mb-2" type="password" placeholder="Password" />
+        <input id="txtConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password" />
+        <button class="btn btn-primary col-12 mt-2" type="submit" id="btnRegister">Register</button>
+        <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToLogin">Already have an account? Login here</button>
+      </div>
+    </form>
 
-
-                <div class="form-group">
-                    <label for="ddlCourses" class="form-label">Select Course</label>
-                    <select class="form-control mb-3" id="ddlCourses" aria-label="Select your course">
-                        <option value="">-- Choose a Course --</option>
-                        <option value="course1">Course One</option>
-                        <option value="course2">Course Two</option>
-                        <option value="course3">Course Three</option>
-                    </select>
-                </div>
-
-                <button class="btn btn-success col-12 mb-2" type="button" id="btnSubmitCourse" aria-label="Submit selected course">Submit</button>
-                <button class="btn btn-danger col-12 mt-2" type="button" id="btnLogout" aria-label="Logout from the system">Logout</button>
-            </div>
-        </div>
+    <!-- Dashboard -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmDashboard" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center mb-4">Dashboard</h1>
+        <p>Select a course to access your group reviews.</p>
+        <select class="form-control mb-3" id="ddlDashboardCourses">
+          <option value="">-- Choose a Course --</option>
+          <option value="course1">Course One</option>
+          <option value="course2">Course Two</option>
+          <option value="course3">Course Three</option>
+        </select>
+        <button class="btn btn-success col-12 mb-2" type="button" id="btnSubmit">Submit</button>
+        <button class="btn btn-danger col-12" type="button" id="btnLogout">Logout</button>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // Registration Form Submission
-        document.querySelector("#btnRegister").addEventListener("click", (e) => {
-            e.preventDefault();
-            const regEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-            let txtFirstName = document.querySelector("#txtFirstName").value.trim();
-            let txtLastName = document.querySelector("#txtLastName").value.trim();
-            let strEmail = document.querySelector("#txtEmail").value.trim().toLowerCase();
-            let txtPassword = document.querySelector("#txtPassword").value;
-            let txtConfirmPassword = document.querySelector("#txtConfirmPassword").value;
+    <!-- Student Dashboard -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmStudentDashboard" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center mb-3">Student Dashboard</h1>
+        <div class="row">
+          <div class="col-6 mb-2"><button class="btn btn-primary col-12" id="btnCompleteReview">Complete Review</button></div>
+          <div class="col-6 mb-2"><button class="btn btn-primary col-12" id="btnReviewScore">Review Score</button></div>
+          <div class="col-6"><button class="btn btn-primary col-12" id="btnReviewPublic">Review Public</button></div>
+          <div class="col-6"><button class="btn btn-primary col-12" id="btnReports">Reports</button></div>
+        </div>
+        <button class="btn btn-link col-12 mt-3" id="btnBack">Back</button>
+      </div>
+    </div>
 
-            let blnError = false;
-            let strMessage = "";
+    <!-- Complete Review -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmCompleteReview" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center mb-3">Complete Review</h1>
+        <p>Write feedback for each of your group members.</p>
+        <div id="reviewFormGroup">
+          <!-- Dynamically injected review fields per group member -->
+        </div>
+        <button class="btn btn-primary col-12 mt-3" id="btnSubmitReview">Submit Review</button>
+        <button class="btn btn-link col-12 mt-2" id="btnBackToStudentDashboard1">Back</button>
+      </div>
+    </div>
 
-            if (!regEmail.test(strEmail)) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">Invalid email address.</p>';
-            }
-            if (txtFirstName.length < 1) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">First name cannot be empty.</p>';
-            }
-            if (txtLastName.length < 1) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">Last name cannot be empty.</p>';
-            }
-            if (txtPassword.length < 1) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">Password cannot be empty.</p>';
-            }
-            if (txtPassword !== txtConfirmPassword) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">Passwords need to match.</p>';
-            }
+    <!-- Review Score -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmReviewScore" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center mb-3">Review Scores</h1>
+        <p><strong>Your Avg:</strong> 8.2/10</p>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between">Alice <span>8.4</span></li>
+          <li class="list-group-item d-flex justify-content-between">Bob <span>7.9</span></li>
+          <li class="list-group-item d-flex justify-content-between">Charlie <span>8.1</span></li>
+        </ul>
+        <button class="btn btn-link col-12 mt-3" id="btnBackToStudentDashboard2">Back</button>
+      </div>
+    </div>
 
-            if (blnError) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    html: strMessage,
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Registration Successful!',
-                    html: 'You can now log in to your account.',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    document.querySelector("#frmRegistration").reset();
-                    document.querySelector("#frmRegistration").style.display = "none";
-                    document.querySelector("#frmLogin").style.display = "block";
-                });
-            }
-        });
+    <!-- Review Public -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmReviewPublic" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center mb-3">Public Feedback</h1>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Alice:</strong> "Always prepared and supportive."</li>
+          <li class="list-group-item"><strong>Bob:</strong> "Needs to engage more in group work."</li>
+          <li class="list-group-item"><strong>Charlie:</strong> "Great at organizing tasks."</li>
+        </ul>
+        <button class="btn btn-link col-12 mt-3" id="btnBackToStudentDashboard3">Back</button>
+      </div>
+    </div>
 
-        // Login Form Submission
-        document.querySelector("#btnLogin").addEventListener("click", (e) => {
-            e.preventDefault();
+    <!-- Reports -->
+    <div class="card col-12 col-md-6 col-lg-5" id="frmReports" style="display:none;">
+      <div class="card-body">
+        <h1 class="text-center mb-3">Group Reports</h1>
+        <ul class="list-group mb-3">
+          <li class="list-group-item"><strong>Alice:</strong> 8.4 – "Hard-working and kind."</li>
+          <li class="list-group-item"><strong>Bob:</strong> 7.9 – "Can improve punctuality."</li>
+          <li class="list-group-item"><strong>Charlie:</strong> 8.1 – "Good collaborator."</li>
+        </ul>
+        <button class="btn btn-link col-12" id="btnBackToStudentDashboard4">Back</button>
+      </div>
+    </div>
+  </div>
 
-            let strEmail = document.querySelector("#txtLoginEmail").value.trim().toLowerCase();
-            let strPassword = document.querySelector("#txtLoginPassword").value;
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    const showView = id => {
+      document.querySelectorAll("form, .card").forEach(el => el.style.display = "none");
+      document.getElementById(id).style.display = "block";
+    };
 
-            let blnError = false;
-            let strMessage = "";
+    const groupMembers = {
+      course1: ["Alice", "Bob", "Charlie"],
+      course2: ["David", "Eva", "Frank"],
+      course3: ["Grace", "Hector", "Isabel"]
+    };
 
-            if (strEmail.length < 1) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">Email address cannot be empty.</p>';
-            }
-            if (strPassword.length < 1) {
-                blnError = true;
-                strMessage += '<p class="mb-0 mt-0">Password cannot be empty.</p>';
-            }
+    let currentCourse = "";
 
-            if (blnError) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    html: strMessage,
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login Successful!',
-                    text: 'Welcome to the dashboard.',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    document.querySelector("#frmLogin").style.display = "none";
-                    document.querySelector("#frmDashboard").style.display = "block";
-                });
-            }
-        });
+    // Registration, Login, Navigation
+    btnSwapToRegister.onclick = () => showView("frmRegistration");
+    btnSwapToLogin.onclick = () => showView("frmLogin");
 
-        // Submit Button
-        document.querySelector("#btnSubmit").addEventListener("click", () => {
-            Swal.fire({
-                icon: 'info',
-                title: 'Submit',
-                text: 'You have successfully submitted your review.',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                document.querySelector("#frmDashboard").style.display = "none";
-                document.querySelector("#frmStudentDashboard").style.display = "block";
-            });
-        });
+    btnRegister.onclick = e => {
+      e.preventDefault();
+      Swal.fire({ icon: "success", title: "Registered!" }).then(() => showView("frmLogin"));
+    };
 
-        // Swap to Complete Review Page
-        document.querySelector("#btnCompleteReview").addEventListener("click", () => {
-            document.querySelector("#frmStudentDashboard").style.display = "none";
-            document.querySelector("#frmCompleteReview").style.display = "block";
-        });
+    btnLogin.onclick = e => {
+      e.preventDefault();
+      showView("frmDashboard");
+    };
 
-        // Swap to Login Form
-        document.querySelector("#btnSwapToLogin").addEventListener("click", () => {
-            document.querySelector("#frmRegistration").style.display = "none";
-            document.querySelector("#frmLogin").style.display = "block";
-        });
+    btnLogout.onclick = () => {
+      Swal.fire({ icon: "info", title: "Logged Out" }).then(() => showView("frmLogin"));
+    };
 
-        // Swap to Registration Form
-        document.querySelector("#btnSwapToRegister").addEventListener("click", () => {
-            document.querySelector("#frmLogin").style.display = "none";
-            document.querySelector("#frmRegistration").style.display = "block";
-        });
+    // Dashboard: Select Course
+    btnSubmit.onclick = () => {
+      currentCourse = document.getElementById("ddlDashboardCourses").value;
+      if (!currentCourse) {
+        Swal.fire({ icon: "warning", title: "Please select a course." });
+        return;
+      }
+      showView("frmStudentDashboard");
+    };
 
-        // Logout
-        document.querySelector("#btnLogout").addEventListener("click", () => {
-            Swal.fire({
-                icon: 'info',
-                title: 'Logged Out',
-                text: 'You have successfully logged out.',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                document.querySelector("#frmDashboard").style.display = "none";
-                document.querySelector("#frmLogin").style.display = "block";
-            });
-        });
+    // Student Dashboard navigation
+    btnBack.onclick = () => showView("frmDashboard");
+    btnCompleteReview.onclick = () => {
+      const members = groupMembers[currentCourse] || [];
+      const container = document.getElementById("reviewFormGroup");
+      container.innerHTML = "";
+      members.forEach(name => {
+        container.innerHTML += `
+          <div class="form-group">
+            <label>${name}'s Score (1–10)</label>
+            <input class="form-control mb-2" type="number" min="1" max="10" />
+            <label>Feedback</label>
+            <textarea class="form-control mb-3" rows="2" placeholder="Write something about ${name}..."></textarea>
+          </div>
+        `;
+      });
+      showView("frmCompleteReview");
+    };
 
-        // Submit Course Selection
-        document.querySelector("#btnSubmitCourse").addEventListener("click", () => {
-            const ddl = document.querySelector("#ddlCourses");
-            const selectedCourse = ddl.value;
-            const selectedText = ddl.options[ddl.selectedIndex].text;
+    btnSubmitReview.onclick = () => {
+      Swal.fire({ icon: "success", title: "Review Submitted" }).then(() => showView("frmStudentDashboard"));
+    };
 
-            if (selectedCourse) {
-                Swal.fire({
-                    icon: 'Success',
-                    title: 'Course Selected',
-                    text: `You selected: ${selectedText}`,
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                Swal.fire({
-                    icon: 'Warning',
-                    title: 'No Course Selected',
-                    text: 'Please choose a course before submitting.',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
-    </script>
+    // Other views
+    btnReviewScore.onclick = () => showView("frmReviewScore");
+    btnReviewPublic.onclick = () => showView("frmReviewPublic");
+    btnReports.onclick = () => showView("frmReports");
+
+    // Back buttons
+    btnBackToStudentDashboard1.onclick =
+    btnBackToStudentDashboard2.onclick =
+    btnBackToStudentDashboard3.onclick =
+    btnBackToStudentDashboard4.onclick = () => showView("frmStudentDashboard");
+  </script>
 </body>
 </html>
+
+
+
 
 
 
