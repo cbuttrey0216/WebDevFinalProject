@@ -1,11 +1,205 @@
+<!--
+`   Title: index.html
+    Author: Luis G. Flores-Moreno & Connor Buttrey
+    Date: 03 March, 2025
+    Project: Peer Review
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Group Review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    
+<body class="bg-dark">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <!-- Login Form -->
+        <form class="card col-12 col-md-6 col-lg-5" id="frmLogin">
+            <div class="card-body">
+                <h1 class="text-center mb-0 text-primary">Group Review System</h1>
+                <h3 class="text-center mb-4">Login</h3>
+
+                <div class="form-group">
+                    <label for="txtLoginEmail" class="sr-only">Email Address</label>
+                    <input id="txtLoginEmail" class="form-control mb-2" type="email" placeholder="Email Address" aria-label="Enter your email address to log in.">
+                </div>
+                <div class="form-group">
+                    <label for="txtLoginPassword" class="sr-only">Password</label>
+                    <input id="txtLoginPassword" class="form-control mb-2" type="password" placeholder="Password" aria-label="Enter your password to log in.">
+                </div>
+                
+                <hr />
+                <button class="btn btn-primary col-12 mt-2" type="submit" id="btnLogin" aria-label="Submit the login form">Login</button>
+                <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToRegister">Don't have an account? Register here.</button>
+            </div>
+        </form>
+
+        <!-- Registration Form -->
+        <form class="card col-12 col-md-6 col-lg-5" id="frmRegistration" style="display:none;">
+            <div class="card-body">
+                <h1 class="text-center mb-0 text-primary">Group Review System</h1>
+                <h3 class="text-center mb-4">User Registration</h3>
+                <div class="form-group">
+                    <label for="txtFirstName" class="sr-only">First Name</label>
+                    <input id="txtFirstName" class="form-control mb-2" type="text" placeholder="First Name" aria-label="Enter your first name for registration">
+                </div>
+                <div class="form-group">
+                    <label for="txtLastName" class="sr-only">Last Name</label>
+                    <input id="txtLastName" class="form-control mb-2" type="text" placeholder="Last Name" aria-label="Enter your last name for registration">
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail" class="sr-only">Email Address</label>
+                    <input id="txtEmail" class="form-control mb-2" type="email" placeholder="Email Address" aria-label="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="txtPassword" class="sr-only">Password</label>
+                    <input id="txtPassword" class="form-control mb-2" type="password" placeholder="Password" aria-label="Create a password for your account">
+                </div>
+                <div class="form-group">
+                    <label for="txtConfirmPassword" class="sr-only">Confirm Password</label>
+                    <input id="txtConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password" aria-label="Confirm your password">
+                </div>
+                
+                <hr />
+                <button class="btn btn-primary col-12 mt-2" type="submit" id="btnRegister" aria-label="Submit the registration form">Register</button>
+                <button class="btn btn-link col-12 mt-1" type="button" id="btnSwapToLogin">Already have an account? Login here</button>
+            </div>
+        </form>
+
+        <!-- Dashboard -->
+        <div class="card col-12 col-md-6 col-lg-5" id="frmDashboard" style="display:none;">
+            <div class="card-body">
+                <h1 class="text-center mb-4">Welcome to the Group Review Dashboard!</h1>
+                <p class="text-center">Here you can submit your reviews anonymously.</p>
+                <button class="btn btn-danger col-12 mt-3" type="button" id="btnLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Registration Form Submission
+        document.querySelector("#btnRegister").addEventListener("click", (e) => {
+            const regEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+            let txtFirstName = document.querySelector("#txtFirstName").value.trim();
+            let txtLastName = document.querySelector("#txtLastName").value.trim();
+            let strEmail = document.querySelector("#txtEmail").value.trim().toLowerCase();
+            let txtPassword = document.querySelector("#txtPassword").value;
+            let txtConfirmPassword = document.querySelector("#txtConfirmPassword").value;
+
+            let blnError = false;
+            let strMessage = "";
+
+            // Email Validation
+            if (!regEmail.test(strEmail)) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">Invalid email address.</p>';
+            }
+            if (txtFirstName.length < 1) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">First name cannot be empty.</p>';
+            }
+            if (txtLastName.length < 1) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">Last name cannot be empty.</p>';
+            }
+
+            // Password Validation
+            if (txtPassword.length < 1) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">Password cannot be empty.</p>';
+            }
+            if (txtPassword !== txtConfirmPassword) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">Passwords need to match.</p>';
+            }
+
+            if (blnError) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    html: strMessage,
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    html: 'You can now log in to your account.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    document.querySelector("#frmRegistration").reset();
+                    document.querySelector("#frmRegistration").style.display = "none";
+                    document.querySelector("#frmLogin").style.display = "block";
+                });
+            }
+        });
+
+        // Login Form Submission
+        document.querySelector("#btnLogin").addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            let strEmail = document.querySelector("#txtLoginEmail").value.trim().toLowerCase();
+            let strPassword = document.querySelector("#txtLoginPassword").value;
+
+            let blnError = false;
+            let strMessage = "";
+
+            if (strEmail.length < 1) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">Email address cannot be empty.</p>';
+            }
+            if (strPassword.length < 1) {
+                blnError = true;
+                strMessage += '<p class="mb-0 mt-0">Password cannot be empty.</p>';
+            }
+
+            if (blnError) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    html: strMessage,
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful!',
+                    text: 'Welcome to the dashboard.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    document.querySelector("#frmLogin").style.display = "none";
+                    document.querySelector("#frmDashboard").style.display = "block";
+                });
+            }
+        });
+
+        // Swap to Login Form
+        document.querySelector("#btnSwapToLogin").addEventListener("click", () => {
+            document.querySelector("#frmRegistration").style.display = "none";
+            document.querySelector("#frmLogin").style.display = "block";
+        });
+
+        // Swap to Registration Form
+        document.querySelector("#btnSwapToRegister").addEventListener("click", () => {
+            document.querySelector("#frmLogin").style.display = "none";
+            document.querySelector("#frmRegistration").style.display = "block";
+        });
+
+        // Logout
+        document.querySelector("#btnLogout").addEventListener("click", () => {
+            Swal.fire({
+                icon: 'info',
+                title: 'Logged Out',
+                text: 'You have successfully logged out.',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                document.querySelector("#frmDashboard").style.display = "none";
+                document.querySelector("#frmLogin").style.display = "block";
+            });
+        });
+    </script>
 </body>
 </html>
