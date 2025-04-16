@@ -5,8 +5,9 @@
     Project: Peer Review
 -->
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-dark">
-    <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="d-flex justify-content-center align-items-center vh-100 flex-column">
         <!-- Login Form -->
         <form class="card col-12 col-md-6 col-lg-5" id="frmLogin">
             <div class="card-body">
@@ -73,15 +74,28 @@
             <div class="card-body">
                 <h1 class="text-center mb-4">Welcome to the Group Review Dashboard!</h1>
                 <p class="text-center">Here you can submit your reviews anonymously.</p>
-                <button class="btn btn-danger col-12 mt-3" type="button" id="btnLogout">Logout</button>
+
+                <div class="form-group">
+                    <label for="ddlCourses" class="form-label">Select Course</label>
+                    <select class="form-control mb-3" id="ddlCourses" aria-label="Select your course">
+                        <option value="">-- Choose a Course --</option>
+                        <option value="course1">Course One</option>
+                        <option value="course2">Course Two</option>
+                        <option value="course3">Course Three</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success col-12 mb-2" type="button" id="btnSubmitCourse" aria-label="Submit selected course">Submit</button>
+                <button class="btn btn-danger col-12 mt-2" type="button" id="btnLogout" aria-label="Logout from the system">Logout</button>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         // Registration Form Submission
         document.querySelector("#btnRegister").addEventListener("click", (e) => {
+            e.preventDefault();
             const regEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
             let txtFirstName = document.querySelector("#txtFirstName").value.trim();
             let txtLastName = document.querySelector("#txtLastName").value.trim();
@@ -92,7 +106,6 @@
             let blnError = false;
             let strMessage = "";
 
-            // Email Validation
             if (!regEmail.test(strEmail)) {
                 blnError = true;
                 strMessage += '<p class="mb-0 mt-0">Invalid email address.</p>';
@@ -105,8 +118,6 @@
                 blnError = true;
                 strMessage += '<p class="mb-0 mt-0">Last name cannot be empty.</p>';
             }
-
-            // Password Validation
             if (txtPassword.length < 1) {
                 blnError = true;
                 strMessage += '<p class="mb-0 mt-0">Password cannot be empty.</p>';
@@ -139,7 +150,7 @@
 
         // Login Form Submission
         document.querySelector("#btnLogin").addEventListener("click", (e) => {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
 
             let strEmail = document.querySelector("#txtLoginEmail").value.trim().toLowerCase();
             let strPassword = document.querySelector("#txtLoginPassword").value;
@@ -200,6 +211,32 @@
                 document.querySelector("#frmLogin").style.display = "block";
             });
         });
+
+        // Submit Course Selection
+        document.querySelector("#btnSubmitCourse").addEventListener("click", () => {
+            const ddl = document.querySelector("#ddlCourses");
+            const selectedCourse = ddl.value;
+            const selectedText = ddl.options[ddl.selectedIndex].text;
+
+            if (selectedCourse) {
+                Swal.fire({
+                    icon: 'Success',
+                    title: 'Course Selected',
+                    text: `You selected: ${selectedText}`,
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'Warning',
+                    title: 'No Course Selected',
+                    text: 'Please choose a course before submitting.',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
     </script>
 </body>
 </html>
+
+
+
