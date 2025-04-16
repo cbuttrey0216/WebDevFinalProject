@@ -48,6 +48,7 @@
           <option>Option 2</option>
           <option>Option 3</option>
         </select>
+        <button class="btn btn-primary col-12 mb-2" id="btnInstructorPanelSubmit">Submit</button>
         <button class="btn btn-link col-12" id="btnBackToRoleSelect">Back</button>
       </div>
     </div>
@@ -276,6 +277,12 @@
     btnBackToStudentDashboard2.onclick =
     btnBackToStudentDashboard3.onclick =
     btnBackToStudentDashboard4.onclick = () => showView("frmStudentDashboard");
+
+    // Instructor Panel to Instructor Dashboard
+    document.querySelector("#btnInstructorPanelSubmit").onclick = () => {
+      Swal.fire({ icon: "success", title: "Instructor Panel Submitted" }).then(() => showView("frmInstructorDashboard"));
+    };
+    btnBackToInstructorLogin.onclick = () => showView("frmInstructorLogin");
   </script>
 </body>
 </html>
