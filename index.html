@@ -22,6 +22,7 @@
       <div class="card-body text-center">
         <h1 class="text-primary mb-3">Welcome to Group Review</h1>
         <p>Select your role to begin:</p>
+        <!-- Given the option to sign in as either, takes user to correct dashboard -->
         <button class="btn btn-primary col-12 mb-2" id="btnRoleStudent">Login as Student</button>
         <button class="btn btn-secondary col-12" id="btnRoleInstructor">Login as Instructor</button>
       </div>
@@ -43,6 +44,7 @@
     <div class="card col-12 col-md-6 col-lg-5" id="frmInstructor" style="display:none;">
       <div class="card-body text-center">
         <h1 class="text-primary mb-3">Instructor Panel</h1>
+        <!-- These options will later be effected by the backend, these are placeholders for proof that it works -->
         <select class="form-control mb-3">
           <option>Option 1</option>
           <option>Option 2</option>
@@ -86,7 +88,8 @@
         <h1 class="text-center mb-4">Dashboard</h1>
         <p>Select a course to access your group reviews.</p>
         <select class="form-control mb-3" id="ddlDashboardCourses">
-          <option value="">-- Choose a Course --</option>
+        <!-- These options will later be effected by the backend, these are placeholders for proof that it works -->
+        <option value="">-- Choose a Course --</option>
           <option value="course1">Course One</option>
           <option value="course2">Course Two</option>
           <option value="course3">Course Three</option>
@@ -156,6 +159,7 @@
     <div class="card col-12 col-md-6 col-lg-5" id="frmReviewScore" style="display:none;">
       <div class="card-body">
         <h1 class="text-center mb-3">Review Scores</h1>
+        <!-- These options will later be effected by the backend, these are placeholders for proof that it works -->
         <p><strong>Your Avg:</strong> 8.2/10</p>
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between">Alice <span>8.4</span></li>
@@ -170,6 +174,7 @@
     <div class="card col-12 col-md-6 col-lg-5" id="frmReviewPublic" style="display:none;">
       <div class="card-body">
         <h1 class="text-center mb-3">Public Feedback</h1>
+        <!-- These options will later be effected by the backend, these are placeholders for proof that it works -->
         <ul class="list-group">
           <li class="list-group-item"><strong>Alice:</strong> "Always prepared and supportive."</li>
           <li class="list-group-item"><strong>Bob:</strong> "Needs to engage more."</li>
@@ -183,6 +188,7 @@
     <div class="card col-12 col-md-6 col-lg-5" id="frmReports" style="display:none;">
       <div class="card-body">
         <h1 class="text-center mb-3">Group Reports</h1>
+        <!-- These options will later be effected by the backend, these are placeholders for proof that it works -->
         <ul class="list-group mb-3">
           <li class="list-group-item"><strong>Alice:</strong> 8.4 – "Hard-working."</li>
           <li class="list-group-item"><strong>Bob:</strong> 7.9 – "Could participate more."</li>
@@ -256,6 +262,7 @@
       const members = groupMembers[currentCourse] || [];
       const container = document.getElementById("reviewFormGroup");
       container.innerHTML = "";
+    //   Possible backend use, haven't tested completely yet
       members.forEach(name => {
         container.innerHTML += `
           <div class="form-group">
